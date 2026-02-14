@@ -7,6 +7,7 @@ btn.addEventListener("click", () => {
 
     const start = Date.now()
     log("Запуск двух запросов параллельно...")
+    btn.disabled = true
 
     Promise.all([getUser(), getPosts()])
         .then(([user, posts]) => {
@@ -20,5 +21,8 @@ btn.addEventListener("click", () => {
         })
         .catch(error => {
             log("Ошибка: " + error)
+        })
+        .finally(() => {
+            btn.disabled = false
         })
 })

@@ -5,6 +5,7 @@ const btn = document.getElementById("getPostsBtn")
 btn.addEventListener("click", () => {
     clearOutput()
     log("Загрузка постов...")
+    btn.disabled = true
 
     getPosts()
         .then(posts => {
@@ -13,5 +14,8 @@ btn.addEventListener("click", () => {
         })
         .catch(error => {
             log(error)
+        })
+        .finally(() => {
+            btn.disabled = false
         })
 })

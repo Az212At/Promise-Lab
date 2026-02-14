@@ -5,6 +5,7 @@ const btn = document.getElementById("getUserBtn")
 btn.addEventListener("click", () => {
     clearOutput()
     log("Загрузка пользователя...")
+    btn.disabled = true
 
     getUser()
         .then(user => {
@@ -16,5 +17,6 @@ btn.addEventListener("click", () => {
         })
         .finally(() => {
             log("Запрос завершён")
+            btn.disabled = false
         })
 })
